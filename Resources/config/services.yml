@@ -1,0 +1,6 @@
+services:
+    btn.event:
+        class: Btn\EventBundle\Model\EventManager
+        arguments:
+            params: %btn_event%
+            em: @doctrine.orm.entity_manager

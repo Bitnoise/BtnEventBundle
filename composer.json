@@ -1,0 +1,25 @@
+{
+    "name": "bitnoise/event-bundle",
+    "type": "symfony-bundle",
+    "description": "Simple event for symfony 2.3",
+    "keywords": [ "bitnoise", "utilities"],
+    "homepage": "https://github.com/Bitnoise/BtnEventBundle",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Bitnoise Team",
+            "homepage": "http://www.bitnoi.se/",
+            "email": "labs@bitnoi.se"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/symfony": "2.*",
+        "doctrine/orm": ">=2.2.3,<2.4-dev"
+    },
+    "autoload": {
+        "psr-0": { "Btn\\EventBundle": "" }
+    },
+    "target-dir": "Btn/EventBundle"
+}
