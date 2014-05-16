@@ -1,0 +1,7 @@
+<h4>{{ event.title }}</h4>
+
+<p>{% if event.fromDate %}{{ event.fromDate|date('Y-m-d H:i:s') }}{% endif %}</p>
+<p>{% if event.toDate %}{{ event.toDate|date('Y-m-d H:i:s') }}{% endif %}</p>
+<p><a href="{{ event.ticketUrl }}">{{ event.ticketUrl }}</a></p>
+<p><a href="{{ event.venueUrl }}">{{ event.venue }}</a></p>
+<p>{{ event.description }}</p>

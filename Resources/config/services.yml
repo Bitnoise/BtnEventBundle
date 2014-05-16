@@ -1,6 +1,11 @@
 services:
     btn.event:
-        class: Btn\EventBundle\Model\EventManager
+        class: Btn\EventBundle\Service\EventManager
         arguments:
             params: %btn_event%
             em: @doctrine.orm.entity_manager
+    btn.event.content_provider:
+        class: Btn\EventBundle\Service\EventContentProvider
+        arguments:
+            router: '@router'
+            em:     '@doctrine.orm.entity_manager'

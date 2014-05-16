@@ -25,7 +25,7 @@ Simple bundle for generate form for event (symfony 2.3) and save to dabase
         {
             return array(
                 // ...
-                new Btn\Event\BtnEventBundle(),
+                new Btn\EventBundle\BtnEventBundle(),
                 // ...
             );
         }

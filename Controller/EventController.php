@@ -10,11 +10,18 @@ use Symfony\Component\HttpFoundation\Request;
 class EventController extends BaseController
 {
     /**
-     * @Route("/btn-event-dummy", name="btn_event_dummy")
+     * @Route("/show/{id}", name="app_event_show")
      * @Template()
      */
-    public function dummyAction(Request $request)
+    public function showAction(Request $request, $id)
     {
+        $event = $this->getRepository('BtnEventBundle:Event')->findOneBy(array('id' => $id, 'isActive' => 1));
 
+        if (!$event) {
+
+            throw $this->createNotFoundException('The entity does not exist');
+        }
+
+        return array('event' => $event);
     }
 }
