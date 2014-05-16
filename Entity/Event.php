@@ -27,20 +27,21 @@ class Event
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $title;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="from_date", type="date")
+     * @ORM\Column(name="from_date", type="datetime")
      */
     private $fromDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="to_date", type="date")
+     * @ORM\Column(name="to_date", type="datetime")
      */
     private $toDate;
 
@@ -61,14 +62,15 @@ class Event
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank()
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="venue", type="string", length=255)
+     * @ORM\Column(name="venue", type="string", length=255, nullable=true)
      */
     private $venue;
     /**
