@@ -66,7 +66,7 @@ class EventControlController extends Controller
      *
      * @Route("/create", name="cp_event_create")
      * @Method("POST")
-     * @Template("BtnEventBundle:Event:new.html.twig")
+     * @Template("BtnEventBundle:EventControl:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -122,7 +122,7 @@ class EventControlController extends Controller
      *
      * @Route("/{id}/update", name="cp_event_update")
      * @Method("POST")
-     * @Template("BtnEventBundle:Event:edit.html.twig")
+     * @Template("BtnEventBundle:EventControl:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
