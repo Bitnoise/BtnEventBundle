@@ -9,3 +9,9 @@ services:
         arguments:
             router: '@router'
             em:     '@doctrine.orm.entity_manager'
+    btn.event.calendar:
+        class:      Btn\EventBundle\Calendar\Calendar
+        arguments:
+            router: '@router'
+            twig:   '@twig'
+            parameters: %btn_event.calendar.parameters%

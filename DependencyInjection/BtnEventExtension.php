@@ -23,6 +23,7 @@ class BtnEventExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter('btn_event', $config);
+        $container->setParameter('btn_event.calendar.parameters', $config['calendar']['parameters']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
