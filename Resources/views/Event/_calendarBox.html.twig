@@ -1,6 +1,7 @@
 {% block tipEvents %}
 
 {% endblock %}
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/btnevent/css/calendar.css') }}">
 <div id="calendar_box">
     <ul id="calendar_header">
         <li id="calendar_prev" data-url="{{ path('render_calendar', { date: calendar.prevMonth|date }) }}">
