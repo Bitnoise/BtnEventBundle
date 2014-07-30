@@ -2,7 +2,6 @@
 #calendar_box {
   border: 1px solid #fafafa;
   border-bottom: none;
-  width: 300px;
   margin-top: 14px;
 }
 #calendar_box ul li {
@@ -63,7 +62,6 @@
   border-right: none;
 }
 #calendar_box #calendar_list li a {
-  cursor: default;
   color: #0b0b0b;
   font-size: 18px;
   line-height: 40px;
