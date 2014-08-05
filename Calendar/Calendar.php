@@ -31,17 +31,13 @@ class Calendar
 
 	public function __construct( UrlGeneratorInterface $router, \Twig_Environment $twig, $parameters)
     {
-        $this->router = $router;
-        $this->twig   = $twig;
-
-        $this->parameters = $parameters;
-
-        $this->hourStart = $parameters['hour_start'];
-        $this->hourEnd   = $parameters['hour_end'];
-
-        $this->timezone = new \DateTimeZone('Europe/Warsaw');
-
-        $this->date = new \DateTime('now', $this->timezone);
+        $this->router     = $router;
+        $this->twig       = $twig;
+        $this->parameters = $parameters['calendar']['parameters'];
+        $this->hourStart  = $this->parameters['hour_start'];
+        $this->hourEnd    = $this->parameters['hour_end'];
+        $this->timezone   = new \DateTimeZone('Europe/Warsaw');
+        $this->date       = new \DateTime('now', $this->timezone);
     }
 
     public function setResources($resources)

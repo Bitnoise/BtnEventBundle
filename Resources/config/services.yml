@@ -14,4 +14,4 @@ services:
         arguments:
             router: '@router'
             twig:   '@twig'
-            parameters: %btn_event.calendar.parameters%
+            parameters: %btn_event%
