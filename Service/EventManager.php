@@ -1,5 +1,5 @@
 <?php
-namespace Btn\EventBundle\Model;
+namespace Btn\EventBundle\Service;
 
 use Btn\EventBundle\Form\EventType;
 

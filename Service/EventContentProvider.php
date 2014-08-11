@@ -54,4 +54,10 @@ class EventContentProvider implements NodeContentProviderInterface
     {
         return array('id' => $formData['event']);
     }
+
+    public function getName()
+    {
+
+        return 'btn_event_content_provider';
+    }
 }
