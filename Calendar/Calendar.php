@@ -29,7 +29,7 @@ class Calendar
 
     protected $timezone;
 
-	public function __construct( UrlGeneratorInterface $router, \Twig_Environment $twig, $parameters)
+    public function __construct(UrlGeneratorInterface $router, \Twig_Environment $twig, $parameters)
     {
         $this->router     = $router;
         $this->twig       = $twig;
@@ -43,12 +43,14 @@ class Calendar
     public function setResources($resources)
     {
         $this->resources = $resources;
+
         return $this;
     }
 
     public function setEventResources($resources)
     {
         $this->eventResources = $resources;
+
         return $this;
     }
 
@@ -59,12 +61,13 @@ class Calendar
 
     public function getTpl()
     {
-    	return $this->tpl;
+        return $this->tpl;
     }
 
     public function setTpl($tpl)
     {
         $this->tpl = $tpl;
+
         return $this;
     }
 
@@ -80,13 +83,13 @@ class Calendar
     public function getTplExtension()
     {
         if (!$this->tplExtension) return $this->parameters['extension'];
-
         return $this->tplExtension;
     }
 
     public function setTplExtension($ext)
     {
         $this->tplExtension = $ext;
+
         return $this;
     }
 
@@ -96,7 +99,7 @@ class Calendar
             $this->month = new CalMonth($this->getDate(), $this->hourStart, $this->hourEnd);
         }
 
-    	return $this->month;
+        return $this->month;
     }
 
     public function getWeek()
@@ -104,7 +107,8 @@ class Calendar
         if (!$this->week) {
             $this->week = new CalWeek($this->getDate(), $this->hourStart, $this->hourEnd);
         }
-    	return $this->week;
+
+        return $this->week;
     }
 
     public function getDay()
@@ -113,7 +117,7 @@ class Calendar
             $this->day = new CalDay($this->getDate(), $this->hourStart, $this->hourEnd);
         }
 
-    	return $this->day;
+        return $this->day;
     }
 
     public function clean()
@@ -125,17 +129,17 @@ class Calendar
 
     public function render($tpl = 'week')
     {
-    	return $this->twig
-    				->render($this->buildTpl($tpl),
-    					array(
-    							'calendar'       => $this,
-    							'parameters'     => $this->parameters,
+        return $this->twig
+                    ->render($this->buildTpl($tpl),
+                        array(
+                                'calendar'       => $this,
+                                'parameters'     => $this->parameters,
                                 'customParameters' => $this->getCustomParameters(),
                                 'events'         => $this->events,
                                 'eventResources' => $this->getEventResources(),
                                 'resources'      => $this->resources
-    						)
-    					);
+                            )
+                        );
     }
 
     public function setDate($date)
@@ -153,121 +157,135 @@ class Calendar
 
         $this->clean();
 
-    	return $this;
+        return $this;
     }
 
     public function getDate()
     {
-    	return $this->date;
+        return $this->date;
     }
 
     public function setHourStart($hour)
     {
-    	$this->hourStart = $hour;
-    	return $this;
+        $this->hourStart = $hour;
+
+        return $this;
     }
 
     public function setHourEnd($hour)
     {
-    	$this->hourEnd = $hour;
-    	return $this;
+        $this->hourEnd = $hour;
+
+        return $this;
     }
 
     public function getHourStart()
     {
-    	return $this->hourStart;
+        return $this->hourStart;
     }
 
     public function getHourEnd()
     {
-    	return $this->hourEnd();
+        return $this->hourEnd();
     }
 
     public function getParameters()
     {
-    	return $this->parameters;
+        return $this->parameters;
     }
 
     public function getParameter($key)
     {
-    	return isset($this->parameters[$key]) ? $this->parameters[$key] : null;
+        return isset($this->parameters[$key]) ? $this->parameters[$key] : null;
     }
 
     public function setParameter($key, $value)
     {
-    	$this->parameters[$key] = $value;
-    	return $this;
+        $this->parameters[$key] = $value;
+
+        return $this;
     }
 
     public function mergeParameters(array $parameters)
     {
-    	$this->parameters = array_merge($this->parameters, $parameters);
-    	return $this;
+        $this->parameters = array_merge($this->parameters, $parameters);
+
+        return $this;
     }
 
     public function __toString()
     {
-    	return $this->render();
+        return $this->render();
     }
 
     public function modify($string)
     {
         $this->date->modify($string);
         $this->clean();
+
         return $this;
     }
 
     public function cloneModify($string)
     {
         $date = clone($this->date);
+
         return $date->modify($string);
     }
 
     public function getNextMonth()
     {
         $obj = clone($this->date);
+
         return $obj->modify('+1 month');
     }
 
     public function getNextWeek()
     {
         $obj = clone($this->getWeek()->getStart());
+
         return $obj->modify('+1 week');
     }
 
     public function getNextDay()
     {
         $obj = clone($this->date);
+
         return $obj->modify('+1 day');
     }
 
     public function getPrevMonth()
     {
         $obj = clone($this->date);
+
         return $obj->modify('-1 month');
     }
 
     public function getPrevWeek()
     {
         $obj = clone($this->getWeek()->getStart());
+
         return $obj->modify('-1 week');
     }
 
     public function getPrevDay()
     {
         $obj = clone($this->date);
+
         return $obj->modify('-1 day');
     }
 
     public function getMonthName($type = 'extended', $monthNb = false)
     {
         $nb = $monthNb ? $monthNb : $this->getDay()->getMonthNumber();
+
         return $this->parameters['dictionary']['months'][$type][$nb];
     }
 
     public function getDayName($type = 'extended', $dayWeekNb = false)
     {
         $nb = $dayWeekNb ? $dayWeekNb : $this->getDay()->getDayWeekNumber();
+
         return $this->parameters['dictionary']['days'][$type][$nb];
     }
 
@@ -292,6 +310,7 @@ class Calendar
     public function getToday()
     {
         $today = new \DateTime('now', $this->timezone);
+
         return $today->setTime(0, 0, 0);
     }
 
@@ -303,6 +322,7 @@ class Calendar
     public function setCustomParameters($customParameters)
     {
         $this->customParameters = $customParameters;
+
         return $this;
     }
 
@@ -314,6 +334,7 @@ class Calendar
     public function setEvents($events)
     {
         $this->events = $events;
+
         return $this;
     }
 
@@ -326,6 +347,7 @@ class Calendar
     public function getWithTextMonth($date = null)
     {
         $day = (!empty($date) && $date instanceof \DateTime) ? new CalDay($date) : $this->getDay();
+
         return $day->getDate()->format('j').' '.$this->getMonthName('spell', $day->getDate()->format('n')).', '.$day->getDate()->format('Y');
     }
 

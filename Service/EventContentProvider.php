@@ -2,7 +2,7 @@
 
 namespace Btn\EventBundle\Service;
 
-use Btn\NodesBundle\Service\NodeContentProviderInterface;
+use Btn\NodesBundle\Provider\NodeContentProviderInterface;
 use Btn\EventBundle\Form\NodeContentType;
 
 /**
@@ -35,7 +35,6 @@ class EventContentProvider implements NodeContentProviderInterface
 
     public function resolveRoute($formData = array())
     {
-
         return 'app_event_show';
     }
 
@@ -46,7 +45,6 @@ class EventContentProvider implements NodeContentProviderInterface
 
     public function resolveControlRoute($formData = array())
     {
-
         return 'cp_event_edit';
     }
 
@@ -57,7 +55,6 @@ class EventContentProvider implements NodeContentProviderInterface
 
     public function getName()
     {
-
         return 'btn_event_content_provider';
     }
 }

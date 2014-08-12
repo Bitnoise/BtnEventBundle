@@ -2,32 +2,30 @@
 
 namespace Btn\EventBundle\Calendar;
 
-use Btn\EventBundle\Calendar\CalBase;
-
 class CalWeek extends CalBase
 {
 
-	public function __construct(\DateTime $date = null, $hourStart = 0, $hourEnd = 23)
-	{
-		parent::__construct($date, $hourStart, $hourEnd);
+    public function __construct(\DateTime $date = null, $hourStart = 0, $hourEnd = 23)
+    {
+        parent::__construct($date, $hourStart, $hourEnd);
 
-		$this->init();
-	}
+        $this->init();
+    }
 
-	public function init()
-	{
-		$tmpDay = $this->date->format(self::CODE_DAY_OF_MONTH);
+    public function init()
+    {
+        $tmpDay = $this->date->format(self::CODE_DAY_OF_MONTH);
 
- 		$this->start = clone($this->date);
- 		$this->start->setTime(0, 0, 0);
+        $this->start = clone($this->date);
+        $this->start->setTime(0, 0, 0);
 
- 		$tmpDay = $this->start->format(self::CODE_DAY_OF_WEEK);
+        $tmpDay = $this->start->format(self::CODE_DAY_OF_WEEK);
 
- 		if ($tmpDay != $this->getFirstDayOfWeek()) {
- 			$this->start->modify('previous '.$this->getFirstDayOfWeekName());
- 		}
+        if ($tmpDay != $this->getFirstDayOfWeek()) {
+            $this->start->modify('previous '.$this->getFirstDayOfWeekName());
+        }
 
-		$this->end = clone($this->start);
-		$this->end->modify('+6 days');
-	}
+        $this->end = clone($this->start);
+        $this->end->modify('+6 days');
+    }
 }

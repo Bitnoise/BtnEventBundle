@@ -38,7 +38,6 @@ class EventControlController extends Controller
 
         $pagination->setTemplate('BtnCrudBundle:Pagination:default.html.twig');
 
-
         return array(
             'pagination' => $pagination,
         );

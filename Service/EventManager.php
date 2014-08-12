@@ -1,14 +1,13 @@
 <?php
 namespace Btn\EventBundle\Service;
 
-use Btn\EventBundle\Form\EventType;
-
 class EventManager
 {
     private $params;
     private $twig;
 
-    public function __construct(array $params = array(), $em) {
+    public function __construct(array $params = array(), $em)
+    {
         $this->params = $params;
         $this->em = $em;
     }
@@ -17,7 +16,8 @@ class EventManager
      * function for get params
      *
      **/
-    public function getParams() {
+    public function getParams()
+    {
         return $this->params;
     }
 
@@ -25,7 +25,8 @@ class EventManager
      * function for get one item from params
      *
      **/
-    public function getParam($key) {
+    public function getParam($key)
+    {
         return $this->params[$key];
     }
 
@@ -33,7 +34,8 @@ class EventManager
      * function for set one item from params
      *
      **/
-    public function setParam($key, $value) {
+    public function setParam($key, $value)
+    {
         return $this->params[$key] = $value;
     }
 
@@ -41,7 +43,8 @@ class EventManager
      * function for set params
      *
      **/
-    public function setParams($params) {
+    public function setParams($params)
+    {
         $this->params = $params;
     }
 }

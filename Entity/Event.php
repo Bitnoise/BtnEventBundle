@@ -3,7 +3,6 @@
 namespace Btn\EventBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -93,7 +92,7 @@ class Event
     /**
      * Set title
      *
-     * @param string $title
+     * @param  string $title
      * @return Event
      */
     public function setTitle($title)
@@ -116,7 +115,7 @@ class Event
     /**
      * Set ticketUrl
      *
-     * @param string $ticketUrl
+     * @param  string $ticketUrl
      * @return Event
      */
     public function setTicketUrl($ticketUrl)
@@ -139,7 +138,7 @@ class Event
     /**
      * Set venueUrl
      *
-     * @param string $venueUrl
+     * @param  string $venueUrl
      * @return Event
      */
     public function setVenueUrl($venueUrl)
@@ -162,7 +161,7 @@ class Event
     /**
      * Set description
      *
-     * @param string $description
+     * @param  string $description
      * @return Event
      */
     public function setDescription($description)
@@ -185,7 +184,7 @@ class Event
     /**
      * Set venue
      *
-     * @param string $venue
+     * @param  string $venue
      * @return Event
      */
     public function setVenue($venue)
@@ -208,7 +207,7 @@ class Event
     /**
      * Set fromDate
      *
-     * @param \DateTime $fromDate
+     * @param  \DateTime $fromDate
      * @return Event
      */
     public function setFromDate($fromDate)
@@ -231,7 +230,7 @@ class Event
     /**
      * Set toDate
      *
-     * @param \DateTime $toDate
+     * @param  \DateTime $toDate
      * @return Event
      */
     public function setToDate($toDate)
@@ -254,7 +253,7 @@ class Event
     /**
      * Set isActive
      *
-     * @param boolean $isActive
+     * @param  boolean $isActive
      * @return Event
      */
     public function setIsActive($isActive)

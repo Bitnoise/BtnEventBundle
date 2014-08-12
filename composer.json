@@ -14,12 +14,15 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3",
-        "symfony/symfony": "2.*",
-        "doctrine/orm": ">=2.2.3,<2.4-dev"
+        "bitnoise/admin-bundle": "2.0.*"
     },
     "autoload": {
         "psr-0": { "Btn\\EventBundle": "" }
     },
-    "target-dir": "Btn/EventBundle"
+    "target-dir": "Btn/EventBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0-dev"
+        }
+    }
 }
