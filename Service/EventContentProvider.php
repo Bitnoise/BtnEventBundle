@@ -2,7 +2,7 @@
 
 namespace Btn\EventBundle\Service;
 
-use Btn\NodesBundle\Provider\NodeContentProviderInterface;
+use Btn\NodeBundle\Provider\NodeContentProviderInterface;
 use Btn\EventBundle\Form\NodeContentType;
 
 /**
