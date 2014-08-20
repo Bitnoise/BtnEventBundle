@@ -2,6 +2,6 @@ _btn_event_routing_control:
     resource: "@BtnEventBundle/Resources/config/routing/control.yml"
     prefix: /control
 
-# _btn_event_routing_front:
-    # resource: "@BtnEventBundle/Resources/config/routing/front.yml"
-    # prefix: /
+_btn_event_routing_front:
+    resource: "@BtnEventBundle/Resources/config/routing/front.yml"
+    prefix: /

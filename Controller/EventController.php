@@ -31,7 +31,7 @@ class EventController extends BaseController
      */
     public function renderCalendarAction()
     {
-        $calendar    = $this->get('btn.event.calendar');
+        $calendar    = $this->get('btn_event.calendar');
         $sessionDate = $this->get('session')->get('date-calendar');
 
         if ($this->get('request')->get('date')) {
