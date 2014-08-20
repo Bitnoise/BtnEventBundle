@@ -82,6 +82,12 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
+                ->arrayNode('event')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('class')->cannotBeEmpty()->defaultValue('Btn\\EventBundle\\Entity\\Event')->end()
+                    ->end()
+                ->end()
             ->end()
         ;
 

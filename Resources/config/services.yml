@@ -1,20 +1,13 @@
+# services:
 services:
-
-    btn.event:
-        class: Btn\EventBundle\Service\EventManager
-        arguments:
-            params: %btn_event%
-            em: @doctrine.orm.entity_manager
-
-    btn.event.content_provider:
-        class: Btn\EventBundle\Service\EventContentProvider
-        arguments:
-            router: '@router'
-            em:     '@doctrine.orm.entity_manager'
-
-    btn.event.calendar:
+    btn_event.calendar:
         class:      Btn\EventBundle\Calendar\Calendar
         arguments:
             router: '@router'
-            twig:   '@twig'
-            parameters: %btn_event%
+            twig: '@twig'
+            parameters: %btn_event.calendar%
+
+    btn_event.provider.event:
+        class: %btn_base.provider.entity.class%
+        parent: btn_base.provider.abstract_entity
+        arguments: ['%btn_event.event.class%']

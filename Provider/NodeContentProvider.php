@@ -1,29 +1,31 @@
 <?php
 
-namespace Btn\EventBundle\Service;
+namespace Btn\EventBundle\Provider;
 
 use Btn\NodeBundle\Provider\NodeContentProviderInterface;
 use Btn\EventBundle\Form\NodeContentType;
+use Btn\BaseBundle\Provider\EntityProviderInterface;
 
 /**
-* EventContentProvider
-*
-*/
-class EventContentProvider implements NodeContentProviderInterface
+ *
+ */
+class NodeContentProvider implements NodeContentProviderInterface
 {
 
-    private $router;
-    private $em;
+    /** $var \Btn\BaseBundle\Provider\EntityProviderInterface $provider */
+    private $provider;
 
-    public function __construct($router, $em)
+    /**
+     *
+     */
+    public function __construct(EntityProviderInterface $provider)
     {
-        $this->router = $router;
-        $this->em     = $em;
+        $this->provider = $provider;
     }
 
     public function getForm()
     {
-        $events = $this->em->getRepository('BtnEventBundle:Event')->findAll();
+        $events = $this->provider->getRepository()->findAll();
 
         $data = array();
         foreach ($events as $event) {
@@ -43,9 +45,12 @@ class EventContentProvider implements NodeContentProviderInterface
         return array('id' => $formData['event']);
     }
 
+    /**
+     *
+     */
     public function resolveControlRoute($formData = array())
     {
-        return 'cp_event_edit';
+        return 'btn_event_eventcontrol_index';
     }
 
     public function resolveControlRouteParameters($formData = array())
@@ -53,8 +58,11 @@ class EventContentProvider implements NodeContentProviderInterface
         return array('id' => $formData['event']);
     }
 
+    /**
+     *
+     */
     public function getName()
     {
-        return 'btn_event_content_provider';
+        return 'btn_event.node_content_provider.name';
     }
 }

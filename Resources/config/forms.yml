@@ -1,0 +1,28 @@
+parameters:
+    btn_event.form.event_control.class: Btn\EventBundle\Form\EventControlForm
+    # btn_event.form.event_category_control.class: Btn\EventBundle\Form\EventCategoryControlForm
+    # btn_event.form.type.event_category.class: Btn\EventBundle\Form\Type\EventCategoryType
+
+services:
+    btn_event.form.event_control:
+        parent: btn_admin.form.abstract
+        class: %btn_event.form.event_control.class%
+        calls:
+            - [setClass, ['%btn_event.event.class%']]
+        tags:
+            - { name: form.type, alias: btn_event_form_event_control }
+
+    # btn_event.form.event_category_control:
+    #     parent: btn_admin.form.abstract
+    #     class: %btn_event.form.event_category_control.class%
+    #     calls:
+    #         - [setClass, ['%btn_event.event_category.class%']]
+    #     tags:
+    #         - { name: form.type, alias: btn_event_form_event_category_control }
+
+    # btn_event.form.type.event_category:
+    #     class: %btn_event.form.type.event_category.class%
+    #     calls:
+    #         - [setClass, ['%btn_event.event_category.class%']]
+    #     tags:
+    #         - { name: form.type, alias: btn_event_category }

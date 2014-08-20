@@ -1,0 +1,7 @@
+_btn_event_routing_control_controller_event:
+    resource: "@BtnEventBundle/Controller/EventControlController.php"
+    type:     annotation
+
+# _btn_event_routing_control_controller_event_category:
+    # resource: "@BtnEventBundle/Controller/EventCategoryControlController.php"
+    # type:     annotation

@@ -1,0 +1,8 @@
+parameters:
+    btn_event.provider.node_content.class: Btn\EventBundle\Provider\NodeContentProvider
+
+services:
+    btn_event.provider.node_content:
+        class: %btn_event.provider.node_content.class%
+        arguments:
+            provider: @btn_event.provider.event

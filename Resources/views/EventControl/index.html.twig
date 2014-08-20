@@ -1,42 +1,15 @@
-{% from 'BtnCrudBundle::breadcrumb.html.twig' import breadcrumb %}
-{% extends '::control.html.twig' %}
+{% extends 'BtnAdminBundle:Crud:index.html.twig' %}
 
-{% block content %}
-    <h2>{{ 'btn.event.list'|trans }}</h2>
-
-    <table class="table table-striped table-bordered table-condensed">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>{{ 'btn.event.title'|trans }}</th>
-                <th>{{ 'btn.event.from_date'|trans }}</th>
-                <th>{{ 'btn.event.to_date'|trans }}</th>
-                <th>{{ 'btn.event.venue'|trans }}</th>
-                <th>{{ 'btn.event.active'|trans }}</th>
-                <th>{% trans %}crud.actions{% endtrans %}</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in pagination %}
-            <tr>
-                <td>{{ entity.id }}</td>
-                <td>{{ entity.title }}</td>
-                <td>{% if entity.fromDate %}{{ entity.fromDate|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if entity.toDate %}{{ entity.toDate|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity.venue }}</td>
-                <td>{{ (entity.isActive ? 'btn.event.yes' : 'btn.event.no')|trans }}</td>
-                <td><a href="{{ path('cp_event_edit', { 'id': entity.id }) }}" class="btn btn-primary">{% trans %}crud.edit{% endtrans %}</a></td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    {{ knp_pagination_render(pagination) }}
-
-    <a href="{{ path('cp_event_new') }}" class="btn btn-primary">{% trans %}crud.create_new{% endtrans %}</a>
-
+{% block list_table_head_columns %}
+    <th>{% trans %}btn_event.event.title{% endtrans %}</th>
+    <th>{% trans %}btn_event.event.from_date{% endtrans %}</th>
+    <th>{% trans %}btn_event.event.to_date{% endtrans %}</th>
+    <th>{% trans %}btn_event.event.is_active{% endtrans %}</th>
 {% endblock %}
 
-{% block breadcrumb %}
-    {{ breadcrumb({'cp_event': 'crud.breadcrumb.list'}) }}
+{% block list_table_body_columns %}
+    <td>{{ entity.title }}</td>
+    <td>{{ entity.fromDate|date(btn_admin.list.date_time_format) }}</td>
+    <td>{{ entity.toDate|date(btn_admin.list.date_time_format) }}</td>
+    <td>{{ entity.isActive }}</td>
 {% endblock %}
