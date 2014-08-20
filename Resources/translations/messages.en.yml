@@ -9,3 +9,6 @@ btn_event.event.from_date: 'From date'
 btn_event.event.to_date: 'To date'
 btn_event.event.description: 'Description'
 btn_event.event.active: 'Active'
+
+btn_event.type.event.empty_value: 'Choose an Event'
+btn_event.type.event.label: 'Event'
