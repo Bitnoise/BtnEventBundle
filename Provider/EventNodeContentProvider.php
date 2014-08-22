@@ -6,10 +6,7 @@ use Btn\NodeBundle\Provider\NodeContentProviderInterface;
 use Btn\EventBundle\Form\NodeContentType;
 use Btn\BaseBundle\Provider\EntityProviderInterface;
 
-/**
- *
- */
-class NodeContentProvider implements NodeContentProviderInterface
+class EventNodeContentProvider implements NodeContentProviderInterface
 {
 
     /** $var \Btn\BaseBundle\Provider\EntityProviderInterface $provider */
@@ -23,6 +20,9 @@ class NodeContentProvider implements NodeContentProviderInterface
         $this->provider = $provider;
     }
 
+    /**
+     *
+     */
     public function getForm()
     {
         $events = $this->provider->getRepository()->findAll();
@@ -35,11 +35,17 @@ class NodeContentProvider implements NodeContentProviderInterface
         return new NodeContentType($data);
     }
 
+    /**
+     *
+     */
     public function resolveRoute($formData = array())
     {
         return 'app_event_show';
     }
 
+    /**
+     *
+     */
     public function resolveRouteParameters($formData = array())
     {
         return array('id' => $formData['event']);
@@ -53,6 +59,9 @@ class NodeContentProvider implements NodeContentProviderInterface
         return 'btn_event_eventcontrol_index';
     }
 
+    /**
+     *
+     */
     public function resolveControlRouteParameters($formData = array())
     {
         return array('id' => $formData['event']);
@@ -63,6 +72,6 @@ class NodeContentProvider implements NodeContentProviderInterface
      */
     public function getName()
     {
-        return 'btn_event.node_content_provider.name';
+        return 'btn_event.event_node_content_provider.name';
     }
 }
