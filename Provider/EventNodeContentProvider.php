@@ -23,6 +23,14 @@ class EventNodeContentProvider implements NodeContentProviderInterface
     /**
      *
      */
+    public function isEnabled()
+    {
+        return true;
+    }
+
+    /**
+     *
+     */
     public function getForm()
     {
         $events = $this->provider->getRepository()->findAll();
