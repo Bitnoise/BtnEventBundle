@@ -2,12 +2,12 @@
 
 namespace Btn\EventBundle\Controller;
 
-use Btn\BaseBundle\Controller\BaseController;
+use Btn\BaseBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 
-class EventController extends BaseController
+class EventController extends AbstractController
 {
     /**
      * @Route("/show/{id}", name="app_event_show")
