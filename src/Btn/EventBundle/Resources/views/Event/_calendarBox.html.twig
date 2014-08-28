@@ -15,25 +15,26 @@
     {% include 'BtnEventBundle:Event:_calendarList.html.twig' %}
     <ul id="calendar_header">
         <li id="calendar_prev" data-url="{{ path('render_calendar', { date: calendar.prevMonth|date }) }}">
-            <a class="{{ calendar.prevMonth|date('n') >= minDate|date('n') ?: 'hidden' }}" href="#" title="Previous month">{{ calendar.prevMonth|date('F') }}</a>
+            <a class="{{ calendar.prevMonth|date('n') >= minDate|date('n') ?: 'hidden' }}" href="#" title="Previous month" btn-event-month="prev">{{ calendar.prevMonth|date('F') }}</a>
         </li>
         <li id="calendar_month">
             {{ calendar.date|date('F Y') }}
         </li>
         <li id="calendar_next" data-url="{{ path('render_calendar', { date: calendar.nextMonth|date }) }}">
-                <a class="{{ calendar.nextMonth|date('n') <= maxDate|date('n') ?: 'hidden' }}" href="#" title="Next month">{{ calendar.nextMonth|date('F')  }}</a>
+            <a class="{{ calendar.nextMonth|date('n') <= maxDate|date('n') ?: 'hidden' }}" href="#" title="Next month" btn-event-month="next">{{ calendar.nextMonth|date('F')  }}</a>
         </li>
     </ul>
 </div>
-<div class="tips_container">
+{# <div class="tips_container">
     {% for day in calendar.month.days %}
         {% set key = day.date|date('z') %}
         {% if calendar.events[key]|default(false) %}
                 <div class="tips_events" id="event{{ key }}">
-                    <div class="date">{{ calendar.events[key].date|date("F j, Y") }}</div>
+                    <div class="date">{{ calendar.events[key].fromDate|date("F j, Y") }}</div>
                     <span>{{ calendar.events[key].title }}</span>
                     <div class="venue">at the {{ calendar.events[key].venue }} / {{ calendar.events[key].type }}</div>
                 </div>
         {% endif %}
     {% endfor %}
 </div>
+ #}

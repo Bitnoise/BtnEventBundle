@@ -6,7 +6,11 @@ use Btn\BaseBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Btn\AdminBundle\Annotation\EntityProvider;
 
+/**
+ * EntityProvider()
+ */
 class EventController extends AbstractController
 {
     /**
@@ -48,7 +52,7 @@ class EventController extends AbstractController
         $calendar
             ->setDate(($date ? $date : $minDate))
             ->setEvents(
-                $this->getRepository('BtnEventBundle:Event')->getEventsByMonth(
+                $this->get('btn_event.provider.event')->getRepository()->getEventsByMonth(
                     $calendar->getMonth()->getStart(),
                     $calendar->getMonth()->getEnd()
                 )

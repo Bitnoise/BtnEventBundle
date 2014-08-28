@@ -7,20 +7,33 @@ use Btn\EventBundle\Entity\Event;
 
 class EventRepository extends EntityRepository
 {
-    public function getEventsByMonth($dateFrom, $dateTo)
+    public function getEventsByMonth(\DateTime $dateFrom, \DateTime $dateTo)
     {
-        $query = $this->getEntityManager()
-            ->createQuery('SELECT e FROM Btn\EventBundle\Entity\Event e WHERE e.fromDate > :dateFrom AND e.toDate < :dateTo')
+        $qb = $this->createQueryBuilder('e');
+        $qb->select()
+            ->where('e.isActive = 1')
+            ->andWhere($qb->expr()->andX(
+                $qb->expr()->gte('e.fromDate', ':dateFrom'),
+                $qb->expr()->lte('e.toDate', ':dateTo')
+            ))
             ->setParameter('dateFrom', $dateFrom)
-            ->setParameter('dateTo', $dateTo)
+            ->setParameter('dateTo', $dateTo->modify('+1 day'))
         ;
+        //prepare indexed array
+        $indexedEvents = array();
+        foreach ($qb->getQuery()->getResult() as $event) {
+            $indexedEvents[$event->getFromDate()->format('z')] = $event;
+            //mark more indexes of event if it takes more than 1 day
+            if ($event->getToDate()) {
+                //create days period and iterate on it
+                $interval = new \DateInterval("P1D");
+                $period   = new \DatePeriod($event->getFromDate(), $interval, $event->getToDate()->modify('+1 day'));
+                foreach($period as $date){
+                    $indexedEvents[$date->format('z')] = $event;
+                }
+            }
+        }
 
-        $arr = array();
-
-        foreach ($query->getResult() as $entity) {
-            $arr[$entity->getDate()->format('z')] = $entity;
-        }//foreach
-
-        return $arr;
+        return $indexedEvents;
     }
 }
