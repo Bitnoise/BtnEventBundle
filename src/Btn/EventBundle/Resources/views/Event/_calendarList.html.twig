@@ -3,14 +3,15 @@
         {% for day in week.days %}
             {% set key = day.date|date('z') %}
             <li class="{{ loop.last ? 'last' }}">
-                {# events_show', { id: calendar.events[key].id } #}
+                {# events_show', { id:  } #}
                 <a href="{{ calendar.events[key]|default(false) ? '#' : '#' }}"
                     title="{{ calendar.events[key]|default(false) ? calendar.events[key].title : day.date|date('j') }}"
                     class="
                         {{ calendar.events[key]|default(false) ? 'event' }}
                         {{ calendar.getDate|date('n') != day.getDate|date('n') ? 'disable' }}
                     "
-                    data-event-id="#event{{ key }}"
+                    btn-event-key="{{ key }}"
+                    btn-event-id="{{ calendar.events[key] is defined ? calendar.events[key].id }}"
                 >
                     {{ day.date|date('j') }}
                 </a>
