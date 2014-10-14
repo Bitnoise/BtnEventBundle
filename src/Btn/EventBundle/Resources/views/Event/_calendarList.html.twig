@@ -5,7 +5,7 @@
             <li class="{{ loop.last ? 'last' }}">
                 {# events_show', { id:  } #}
                 <a href="{{ calendar.events[key]|default(false) ? '#' : '#' }}"
-                    title="{{ calendar.events[key]|default(false) ? calendar.events[key].title : day.date|date('j') }}"
+                    title="{{ calendar.events[key]|default(false) ? calendar.events[key].title ~ '<br/>' ~ calendar.events[key].description : day.date|date('j') }}"
                     class="
                         {{ calendar.events[key]|default(false) ? 'event' }}
                         {{ calendar.getDate|date('n') != day.getDate|date('n') ? 'disable' }}
