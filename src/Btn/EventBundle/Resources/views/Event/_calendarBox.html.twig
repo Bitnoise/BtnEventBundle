@@ -1,6 +1,10 @@
 {% block tipEvents %}
 
 {% endblock %}
+<h3>{{ calendar.date|date('F Y') }}</h3>
+{% if calendar.events|length > 0 %}
+    <p>{{ calendar.events|length }} important events</p>
+{% endif %}
 <link rel="stylesheet" type="text/css" href="{{ asset('bundles/btnevent/css/calendar.css') }}">
 <div id="calendar_box">
     <ul id="days_of_week">

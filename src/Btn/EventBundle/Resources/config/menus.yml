@@ -7,4 +7,4 @@ services:
         arguments: ["@request", "btn_event.eventcontrol_index", "btn_event_eventcontrol_index", [], []]
         scope: request
         tags:
-            - { name: btn_admin.menu_item , parent: btn_admin.menu_navbar }
+            - { name: btn_admin.menu_item , parent: btn_admin.menu_navbar.modules }

@@ -76,11 +76,12 @@
   color: #fafafa;
 }
 #calendar_box #calendar_list li a.event {
-  background-color: #f4ed27;
+  background-color: #fbb116;
+  color: #fff;
 }
 #calendar_box #calendar_list li a.event:hover {
   cursor: pointer;
-  background-color: #fafafa;
+  background-color: #fbb116;
 }
 #calendar_box #calendar_list li a.event:hover .tip_event {
   display: block;
