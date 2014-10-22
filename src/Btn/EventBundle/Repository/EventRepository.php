@@ -19,12 +19,13 @@ class EventRepository extends EntityRepository
             ->setParameter('dateFrom', $dateFrom)
             ->setParameter('dateTo', $dateTo->modify('+1 day'))
         ;
+
         //prepare indexed array
         $indexedEvents = array();
         foreach ($qb->getQuery()->getResult() as $event) {
             $indexedEvents[$event->getFromDate()->format('z')] = $event;
             //mark more indexes of event if it takes more than 1 day
-            if ($event->getToDate()) {
+            if ($event->getToDate() && $event->getToDate()->format('Y-m-d') > $event->getFromDate()->format('Y-m-d')) {
                 //create days period and iterate on it
                 $interval = new \DateInterval("P1D");
                 $period   = new \DatePeriod($event->getFromDate(), $interval, $event->getToDate()->modify('+1 day'));
