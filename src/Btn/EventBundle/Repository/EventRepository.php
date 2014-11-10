@@ -12,7 +12,7 @@ class EventRepository extends EntityRepository
         $qb = $this->createQueryBuilder('e');
         $qb->select()
             ->where('e.isActive = 1')
-            ->andWhere($qb->expr()->andX(
+            ->andWhere($qb->expr()->orX(
                 $qb->expr()->gte('e.fromDate', ':dateFrom'),
                 $qb->expr()->lte('e.toDate', ':dateTo')
             ))
@@ -24,11 +24,10 @@ class EventRepository extends EntityRepository
         $indexedEvents = array();
         foreach ($qb->getQuery()->getResult() as $event) {
             $indexedEvents[$event->getFromDate()->format('z')] = $event;
-            //mark more indexes of event if it takes more than 1 day
-            if ($event->getToDate() && $event->getToDate()->format('Y-m-d') > $event->getFromDate()->format('Y-m-d')) {
+            if ($event->getToDate()) {
                 //create days period and iterate on it
                 $interval = new \DateInterval("P1D");
-                $period   = new \DatePeriod($event->getFromDate(), $interval, $event->getToDate()->modify('+1 day'));
+                $period   = new \DatePeriod($event->getFromDate(), $interval, $event->getToDate());
                 foreach($period as $date){
                     $indexedEvents[$date->format('z')] = $event;
                 }
