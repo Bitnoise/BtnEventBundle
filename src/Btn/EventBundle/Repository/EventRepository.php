@@ -9,15 +9,14 @@ class EventRepository extends EntityRepository
 {
     public function getEventsByMonth(\DateTime $dateFrom, \DateTime $dateTo)
     {
+        // ldd($dateFrom->format('Y-m-d'), $dateTo->format('Y-m-d'));
         $qb = $this->createQueryBuilder('e');
         $qb->select()
             ->where('e.isActive = 1')
-            ->andWhere($qb->expr()->orX(
-                $qb->expr()->gte('e.fromDate', ':dateFrom'),
-                $qb->expr()->lte('e.toDate', ':dateTo')
-            ))
-            ->setParameter('dateFrom', $dateFrom)
-            ->setParameter('dateTo', $dateTo->modify('+1 day'))
+            ->andWhere('e.fromDate > :dateFrom')
+            ->andWhere('e.toDate < :dateTo')
+            ->setParameter('dateFrom', $dateFrom->format('Y-m-d'))
+            ->setParameter('dateTo', $dateTo->modify('+1 day')->format('Y-m-d'))
         ;
 
         //prepare indexed array
