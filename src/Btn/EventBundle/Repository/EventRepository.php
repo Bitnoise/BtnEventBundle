@@ -28,7 +28,7 @@ class EventRepository extends EntityRepository
             if ($event->getToDate()) {
                 //create days period and iterate on it
                 $interval = new \DateInterval("P1D");
-                $period   = new \DatePeriod($event->getFromDate(), $interval, $event->getToDate());
+                $period   = new \DatePeriod($event->getFromDate(), $interval, $event->getToDate()->modify('+1 day'));
                 foreach($period as $date){
                     $indexedEvents[$date->format('z')] = $event;
                 }
