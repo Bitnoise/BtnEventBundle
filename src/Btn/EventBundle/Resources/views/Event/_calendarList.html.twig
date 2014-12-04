@@ -3,8 +3,7 @@
         {% for day in week.days %}
             {% set key = day.date|date('z') %}
             <li class="{{ loop.last ? 'last' }}">
-                {# events_show', { id:  } #}
-                <a href="{{ calendar.events[key]|default(false) ? '#' : '#' }}"
+                <a href="{{ calendar.events[key]|default(false) ? path('app_event_show', {id: calendar.events[key].id}) : '#' }}"
                     title="{{ calendar.events[key]|default(false) ? calendar.events[key].title ~ '<br/>' ~ calendar.events[key].description : day.date|date('j') }}"
                     class="
                         {{ calendar.events[key]|default(false) ? 'event' }}

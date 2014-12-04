@@ -208,7 +208,7 @@ abstract class AbstractEvent
      */
     public function setCreatedAt($createdAt)
     {
-        $this->created_at = $createdAt;
+        $this->createdAt = $createdAt;
     }
 
     /**
@@ -218,6 +218,6 @@ abstract class AbstractEvent
      */
     public function getCreatedAt()
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 }

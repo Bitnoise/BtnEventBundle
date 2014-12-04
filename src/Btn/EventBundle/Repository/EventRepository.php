@@ -7,9 +7,11 @@ use Btn\EventBundle\Entity\Event;
 
 class EventRepository extends EntityRepository
 {
+    /**
+     * Get events for calendar
+     */
     public function getEventsByMonth(\DateTime $dateFrom, \DateTime $dateTo)
     {
-        // ldd($dateFrom->format('Y-m-d'), $dateTo->format('Y-m-d'));
         $qb = $this->createQueryBuilder('e');
         $qb->select()
             ->where('e.isActive = 1')
@@ -34,5 +36,21 @@ class EventRepository extends EntityRepository
         }
 
         return $indexedEvents;
+    }
+
+    /**
+     * Get list of current events for paginator
+     */
+    public function getCurrentEvents()
+    {
+        $now = new \DateTime();
+        $qb  = $this->createQueryBuilder('e');
+        $qb->select()
+            ->where('e.isActive = 1')
+            ->andWhere('e.toDate >= :now')
+            ->setParameter('now', $now)
+        ;
+
+        return $qb;
     }
 }
