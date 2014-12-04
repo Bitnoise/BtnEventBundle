@@ -14,7 +14,7 @@ use Btn\AdminBundle\Annotation\EntityProvider;
 class EventController extends AbstractController
 {
     /**
-     * @Route("/show/{id}", name="app_event_show")
+     * @Route("/event/show/{id}", name="app_event_show")
      * @Template()
      */
     public function showAction(Request $request, $id)
